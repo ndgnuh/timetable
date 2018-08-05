@@ -1,0 +1,52 @@
+* {
+	padding: 0;
+	margin: 0px;
+	box-sizing: border-box;
+	font-size: 20px
+}
+
+input[type="text"], input[type="number"] { 
+	padding: 0.25em;
+	border-style: solid;
+	border-color: #00000055;
+	border-radius: 5px;
+}
+
+#add {
+	border: 0;
+	padding: 10px 50px;
+	background: rgb(100,175,125);
+	color: #fff;
+}
+
+#add:hover {
+	background: rgb(125,200,150)
+}
+
+select {
+	background: #fff;
+	min-width: 100px;
+}
+
+
+#hide {
+	border: 0;
+	padding: 10px 50px;
+	background: rgb(200,100,100);
+	color: #fff;
+}
+
+#hide:hover {
+	border: 0;
+	padding: 10px 50px;
+	background: rgb(225,120,120);
+	color: #fff;
+}
+
+td {
+	padding: 10px
+}
+
+#editor, #time-table-container {
+	float: left
+}

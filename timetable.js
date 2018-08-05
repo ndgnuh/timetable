@@ -2,7 +2,7 @@ const canvas = document.getElementById("time-table")
 const ctx = canvas.getContext('2d')
 const xOffset = 100
 const yOffset = 50
-const width = 200
+const width = 250
 const height = yOffset
 const baseStart = 600
 const baseEnd = 1800
@@ -11,9 +11,11 @@ const step = 50
 let maxWidth = xOffset;
 let maxHeight = yOffset/2;
 
-ctx.font = "25px Noto Serif"
-ctx.textBaseline = "middle"
-ctx.textAlign = "center"
+function configCtx () {
+	ctx.font = "25px Noto Serif"
+	ctx.textBaseline = "middle"
+	ctx.textAlign = "center"
+}
 
 
 
@@ -92,10 +94,9 @@ function renderBorder() {
 }
 
 function renderEvent({sh, sm, eh, em, place, name, day, color="rgb(100,150,175)"}) {
+	day = day - 2
 	const start = sh + sm/60 - 6
 	const end = eh + em/60 - 6
-	alert(start)
-	alert(end)
 	let x = xOffset + day*width
 	let newYOffset = yOffset + start*height*2
 	const newHeight = (end - start)* height * 2
@@ -121,16 +122,16 @@ function renderEvent({sh, sm, eh, em, place, name, day, color="rgb(100,150,175)"
 	ctx.fillText(displayTime, x, y)
 }
 
+
 renderDay() 
 renderTime()
 renderBorder()
-
-renderEvent({
-	sh: 6,
-	sm: 30,
-	eh: 7,
-	em: 45,
-	place: "C1-302",
-	name: "Giải tích số",
-	day: 3
+canvas.height = maxHeight
+canvas.width = maxWidth
+configCtx()
+renderDay() 
+renderTime()
+renderBorder()
+listClass.forEach(item => {
+	renderEvent(item)
 })
