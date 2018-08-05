@@ -1,20 +1,21 @@
 const canvas = document.getElementById("time-table")
 const ctx = canvas.getContext('2d')
 const xOffset = 100
-const yOffset = 50
+const yOffset = 40
 const width = 250
 const height = yOffset
-const baseStart = 600
-const baseEnd = 1800
+const baseStart = 675
+const baseEnd = 1775
 const step = 50
-
+const fontSize = "15px"
+const font = "Noto Serif Blk"
 let maxWidth = xOffset;
 let maxHeight = yOffset/2;
 
 function configCtx () {
 	ctx.fillStyle = "#fafbfc"
 	ctx.fillRect(0,0,canvas.width, canvas.height)
-	ctx.font = "25px Noto Serif"
+	ctx.font = `${fontSize} ${font}`
 	ctx.textBaseline = "middle"
 	ctx.textAlign = "center"
 }
@@ -65,7 +66,7 @@ function renderTime() {
 		ctx.fillStyle = "#fff"
 		ctx.fillText(`${hour}:${minute}`, x, y)
 		ctx.beginPath()
-		ctx.strokeStyle = "#42424255"
+		ctx.strokeStyle = "#42424222"
 		ctx.moveTo(xOffset, y)
 		ctx.lineTo(maxWidth, y)
 		ctx.stroke()
@@ -97,8 +98,8 @@ function renderBorder() {
 
 function renderEvent({sh, sm, eh, em, place, name, day, color="rgb(100,150,175)"}) {
 	day = day - 2
-	const start = sh + sm/60 - 6
-	const end = eh + em/60 - 6
+	const start = sh + sm/60 - baseStart/100
+	const end = eh + em/60 - baseStart/100
 	let x = xOffset + day*width
 	let newYOffset = yOffset + start*height*2
 	const newHeight = (end - start)* height * 2
@@ -113,14 +114,14 @@ function renderEvent({sh, sm, eh, em, place, name, day, color="rgb(100,150,175)"
 	ctx.fillRect(x, newYOffset, width, newHeight)
 
 	x += width / 2
-	y = newYOffset + newHeight / 4
+	y = newYOffset + 20
 	ctx.fillStyle = "#fff"
 	ctx.fillText(name, x, y)
 
-	y += newHeight / 4
+	y += 20
 	ctx.fillText(place, x, y)
 
-	y += newHeight / 4
+	y += 20
 	ctx.fillText(displayTime, x, y)
 }
 
@@ -137,3 +138,5 @@ renderBorder()
 listClass.forEach(item => {
 	renderEvent(item)
 })
+
+renderTime()
