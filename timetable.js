@@ -2,12 +2,12 @@ const canvas = document.getElementById("time-table")
 const ctx = canvas.getContext('2d')
 const xOffset = 100
 const yOffset = 40
-const width = 250
+const width = 280
 const height = yOffset
 const baseStart = 675
 const baseEnd = 1775
 const step = 50
-const fontSize = "15px"
+const fontSize = "18px"
 const font = "Noto Serif Blk"
 let maxWidth = xOffset;
 let maxHeight = yOffset/2;
@@ -96,7 +96,7 @@ function renderBorder() {
 	ctx.stroke()
 }
 
-function renderEvent({sh, sm, eh, em, place, name, day, color="rgb(100,150,175)"}) {
+function renderEvent({sh, sm, eh, em, place, name, day, color, week=""}) {
 	day = day - 2
 	const start = sh + sm/60 - baseStart/100
 	const end = eh + em/60 - baseStart/100
@@ -118,11 +118,15 @@ function renderEvent({sh, sm, eh, em, place, name, day, color="rgb(100,150,175)"
 	ctx.fillStyle = "#fff"
 	ctx.fillText(name, x, y)
 
-	y += 20
+	y += 25
 	ctx.fillText(place, x, y)
 
-	y += 20
+	y += 25
 	ctx.fillText(displayTime, x, y)
+
+	y += 25
+	week = week? "w: " + week : "" 
+	ctx.fillText(week, x, y)
 }
 
 
