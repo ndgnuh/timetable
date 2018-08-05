@@ -12,6 +12,8 @@ let maxWidth = xOffset;
 let maxHeight = yOffset/2;
 
 function configCtx () {
+	ctx.fillStyle = "#fafbfc"
+	ctx.fillRect(0,0,canvas.width, canvas.height)
 	ctx.font = "25px Noto Serif"
 	ctx.textBaseline = "middle"
 	ctx.textAlign = "center"
@@ -28,13 +30,13 @@ function renderDay() {
 	for(day = 2; day <= 7; day ++) {
 		let x = xOffset + dayIndex*width
 		let y = 0;
-		ctx.fillStyle = "rgb(100,175,125)"
+		ctx.fillStyle = "#2E7D32"
 		ctx.fillRect(x, 0, width, height)
 
 		x = xOffset +  dayIndex*width+width/2
 		y = height / 2
 		ctx.fillStyle = "#FFF"
-		ctx.fillText(`Thứ ${day}`, x, y)
+		ctx.fillText(days[day], x, y)
 
 		dayIndex++
 	}
