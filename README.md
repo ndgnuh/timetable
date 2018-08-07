@@ -11,5 +11,7 @@ time table for students..
 see `listClass.js` and you will know
 
 ### Preview
+ 
+preview
 
-!["preview"]("Timetable demo blur.png")
+![preview](timetable-demo.png)
