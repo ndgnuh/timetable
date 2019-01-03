@@ -9,7 +9,7 @@ const color = {
 	cyan: "#00BCD4",
 	teal: "#009688",
 	green: "#4CAF50",
-	lightGreen: "8BC34A",
+	lightGreen: "#8BC34A",
 	lime: "#CDDC39",
 	yellow: "#FFEB3B",
 	amber: "#FFC107",
